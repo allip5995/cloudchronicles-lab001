@@ -1,0 +1,37 @@
+Situation
+A regional outage has affected services hosted in us-central1, causing downtime for applications relying on Cloud SQL databases, Cloud Storage buckets, and messaging through Pub/Sub.
+
+Task
+The goal is to ensure minimal disruption by implementing failover mechanisms, maintaining data integrity, and alerting stakeholders. The recovery plan should automate the process to minimize manual intervention.
+
+Action
+Database Failover – Cloud SQL Replicas
+
+Use Cloud SQL cross-region replicas to maintain database availability.
+
+When us-central1 fails, promote a read replica in another region, ensuring seamless transition.
+
+If needed, direct traffic via Cloud Load Balancer to applications in another region.
+
+Storage Continuity – Multi-Region Cloud Storage
+
+Use multi-region Cloud Storage buckets to ensure high availability.
+
+Applications should access NAM4 multi-region storage, automatically serving data from other locations.
+
+Messaging & Alerts – Pub/Sub
+
+Set up Pub/Sub topic replication to another region.
+
+Use Cloud Monitoring and Alerting with Pub/Sub notifications to detect outages and trigger recovery actions.
+
+Configure Cloud Functions to automatically reroute traffic or restart services.
+
+Result
+Applications remain operational with minimal downtime.
+
+Data is accessible from another region without loss.
+
+Teams receive instant notifications, allowing them to take corrective action quickly.
+
+This approach ensures resilience, automation, and rapid recovery, keeping services available despite outages. Would you like additional details on the failover configurations?
